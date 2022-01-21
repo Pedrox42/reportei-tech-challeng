@@ -24,7 +24,7 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+            <p class="login-box-msg">Esqueceu sua senha? Digite seu email para redefini-lá.</p>
 
             @if (session('status'))
                 <div class="alert alert-success">
@@ -50,18 +50,20 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">Send Password Reset Link</button>
+                        <button type="submit" class="btn btn-primary btn-block">Redefinir senha</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            <p class="mt-3 mb-1">
-                <a href="{{ route("login") }}">Login</a>
-            </p>
-            <p class="mb-0">
-                <a href="{{ route("register") }}" class="text-center">Register a new membership</a>
-            </p>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <a href="{{ route("login") }}" class="ml-5">Login</a>
+                </div>
+                <div class="col-6">
+                    <a href="{{ route("register") }}" class="text-right float-right mr-5">Cadastrar</a>
+                </div>
+            </div>
         </div>
         <!-- /.login-card-body -->
     </div>

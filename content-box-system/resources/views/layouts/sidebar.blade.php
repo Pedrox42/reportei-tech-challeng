@@ -1,17 +1,19 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{ route('home') }}" class="brand-link">
-        <img src="https://infyom.com/images/logo/blue_logo_150x150.jpg"
-             alt="AdminLTE Logo"
-             class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
-    </a>
-
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
+        <a href="{{ route('home') }}" class="navbar-links-color text-center">
+            <span class="brand-text">{{ config('app.name') }}</span>
+        </a>
+    </div>
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
+        <a href="{{ route('home') }}" class="navbar-links-color">
+            <span href="#" class="brand-text">{{ Auth::user()->name }}</span>
+        </a>
+    </div>
     <div class="sidebar">
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @include('layouts.menu')
             </ul>
         </nav>
     </div>
-
 </aside>
