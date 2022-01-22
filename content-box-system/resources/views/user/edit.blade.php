@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3>Editar seu perfil</h3>
+            <h3 class="my-2">Editar seu perfil</h3>
         </div>
         <div class="card-body">
             <form action="{{ route('salvar-perfil') }}" method="POST">
@@ -11,7 +11,7 @@
                     <label for="name">Nome:</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ Auth::user()->name }}" required>
                     @error('name')
-                    <span class="error invalid-feedback">{{ $message }}</span>
+                        <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">

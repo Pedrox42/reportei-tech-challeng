@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContentBoxController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function (){
+    //Rotas do minha conta
+    Route::prefix('minha-conta')->group(function (){
+        Route::get('/editar-perfil', [App\Http\Controllers\UserController::class, 'editProfile'])->name('editar-perfil');
+        Route::post('/salvar-perfil', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('salvar-perfil');
+    });
+    //Rotas das content-boxes
+    Route::prefix('/content-boxes')->group(function (){
+        Route::resource('content-box', ContentBoxController::class);
+    });
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/editar-perfil', [App\Http\Controllers\UserController::class, 'editProfile'])->name('editar-perfil');
-Route::post('/salvar-perfil', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('salvar-perfil');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();

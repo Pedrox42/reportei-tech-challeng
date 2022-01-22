@@ -181,6 +181,7 @@ return [
         'text'      => 'texto',
         'time'      => 'hora',
         'title'     => 'título',
+        'files'     => 'arquivos',
         'username'  => 'usuário',
         'year'      => 'ano',
         'description' => 'descrição',
