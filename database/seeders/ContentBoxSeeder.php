@@ -13,6 +13,6 @@ class ContentBoxSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ///
     }
 }
