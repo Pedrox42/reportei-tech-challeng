@@ -18,7 +18,7 @@ class FilePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class FilePolicy
      */
     public function view(User $user, File $file)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class FilePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class FilePolicy
      */
     public function update(User $user, File $file)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -65,7 +65,7 @@ class FilePolicy
      */
     public function delete(User $user, File $file)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -77,7 +77,7 @@ class FilePolicy
      */
     public function restore(User $user, File $file)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -89,6 +89,6 @@ class FilePolicy
      */
     public function forceDelete(User $user, File $file)
     {
-        //
+        return $user->isAdmin();
     }
 }

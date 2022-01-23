@@ -18,7 +18,7 @@ class ContentBoxPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ContentBoxPolicy
      */
     public function view(User $user, ContentBox $contentBox)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class ContentBoxPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class ContentBoxPolicy
      */
     public function update(User $user, ContentBox $contentBox)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -65,7 +65,7 @@ class ContentBoxPolicy
      */
     public function delete(User $user, ContentBox $contentBox)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -77,7 +77,7 @@ class ContentBoxPolicy
      */
     public function restore(User $user, ContentBox $contentBox)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -89,6 +89,6 @@ class ContentBoxPolicy
      */
     public function forceDelete(User $user, ContentBox $contentBox)
     {
-        //
+        return $user->isAdmin();
     }
 }

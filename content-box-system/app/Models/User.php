@@ -43,6 +43,10 @@ class User extends Authenticatable
     ];
 
     public function isAdmin(){
-        return $this->role == 'admin';
+        return $this->role === 'admin';
+    }
+
+    public function favorites(){
+        return $this->belongsToMany(ContentBox::class, "user_content_box");
     }
 }

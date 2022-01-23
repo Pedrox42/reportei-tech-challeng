@@ -18,4 +18,8 @@ class ContentBox extends Model
     public function files(){
         return $this->hasMany(File::class, 'content_box_id', 'id');
     }
+
+    public function favoritedBy(){
+        return $this->belongsToMany(User::class, "user_content_box");
+    }
 }

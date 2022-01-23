@@ -12,9 +12,19 @@ use Illuminate\Support\Facades\Storage;
 
 class ContentBoxController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(ContentBox::class);
+    }
+
     public function index()
     {
         $contentBoxes = ContentBox::all();
+        return view('content-box.index', compact('contentBoxes'));
+    }
+
+    public function favoriteBoxes(){
+        $contentBoxes = auth()->user()->favorites;
         return view('content-box.index', compact('contentBoxes'));
     }
 
@@ -38,12 +48,16 @@ class ContentBoxController extends Controller
             $file->save();
             unset($file, $storedFile);
         }
-        return redirect(route('content-box.index'));
+        return redirect(route('content-box.index'))->with('success', true);
     }
 
     public function show(ContentBox $contentBox)
     {
-        return view('content-box.show', compact('contentBox'));
+        $favorited = false;
+        if($contentBox->favoritedBy->contains(auth()->user()->id)){
+            $favorited = true;
+        }
+        return view('content-box.show', compact('contentBox', 'favorited'));
     }
 
     public function edit(ContentBox $contentBox)
@@ -64,7 +78,7 @@ class ContentBoxController extends Controller
             $file->save();
             unset($file, $storedFile);
         }
-        return redirect(route('content-box.edit', $contentBox->id));
+        return redirect(route('content-box.edit', $contentBox->id))->with('success', true);
     }
 
     public function destroy(ContentBox $contentBox)
@@ -73,10 +87,9 @@ class ContentBoxController extends Controller
         $directory = Config::get('uploaded-files.directory');
         foreach ($filesInBox as $file){
             Storage::delete($directory . '/' . $file->name);
-            $file->delete();
         }
         $contentBox->delete();
-        return redirect(route('content-box.index'));
+        return redirect(route('content-box.index'))->with('success', true);
     }
 
     public function downloadFile(File $file){

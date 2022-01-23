@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContentBox;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,18 @@ class UserController extends Controller
         $data['password'] = bcrypt($data['password']);
         $user = auth()->user();
         $user->update($data);
-        return redirect(route('editar-perfil'));
+        return redirect(route('editar-perfil'))->with('success', true);
+    }
+
+    public function addFavorite(ContentBox $contentBox){
+        $user = auth()->user();
+        $user->favorites()->attach($contentBox);
+        return redirect()->back()->with('success', true);
+    }
+
+    public function removeFavorite(ContentBox $contentBox){
+        $user = auth()->user();
+        $user->favorites()->detach($contentBox);
+        return redirect()->back()->with('success', true);
     }
 }

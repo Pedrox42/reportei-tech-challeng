@@ -2,6 +2,7 @@
 @section('content')
     @component('components.show')
         @slot('title', $contentBox->title)
-        @slot('boxFiles', $contentBox->files)
+        @slot('contentBox', $contentBox)
+        @slot('favorited', $favorited)
     @endcomponent
 @endsection

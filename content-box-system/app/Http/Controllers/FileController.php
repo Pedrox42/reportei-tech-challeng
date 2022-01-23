@@ -10,11 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(File::class);
+    }
+
     public function destroy(File $file)
     {;
         $directory = Config::get('uploaded-files.directory');
         Storage::delete($directory . '/' . $file->name);
         $file->delete();
-        return redirect(route('content-box.edit', $file->contentBox->id));
+        return redirect(route('content-box.edit', $file->contentBox->id))->with('success', true);
     }
 }

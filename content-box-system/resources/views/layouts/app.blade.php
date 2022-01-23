@@ -10,6 +10,7 @@
           crossorigin="anonymous"/>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/styles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" integrity="sha512-gOQQLjHRpD3/SEOtalVq50iDn4opLVup2TF8c4QPI3/NmUPNZOk2FG0ihi8oCU/qYEsw4P6nuEZT2lAG0UNYaw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @yield('third_party_stylesheets')
 
@@ -52,7 +53,10 @@
 
 <script src="{{ mix('js/app.js') }}" defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(Session::has('success'))
+    <script src="{{ asset('js/successModal.js') }}"></script>
+@endif
 @yield('third_party_scripts')
 
 @stack('page_scripts')
