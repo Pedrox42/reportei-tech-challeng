@@ -12,7 +12,7 @@ class ContentBox extends Model
     protected $fillable = ['title'];
 
     public function owner(){
-        return $this->belongsTo(User::class, 'id', 'id');
+        return $this->belongsTo(User::class, 'owner_id', 'id');
     }
 
     public function files(){

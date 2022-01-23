@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContentBoxController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::middleware('auth')->group(function (){
     //Rotas das content-boxes
     Route::prefix('/content-boxes')->group(function (){
         Route::resource('content-box', ContentBoxController::class);
+        Route::get('/download/{file}', [App\Http\Controllers\ContentBoxController::class, 'downloadFile'])->name('download-file');
+        Route::resource('file', FileController::class)->only('destroy');
     });
 });
 

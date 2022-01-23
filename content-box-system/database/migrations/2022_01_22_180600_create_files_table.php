@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('content_box_id')->references('id')->on('content_boxes');
+            $table->foreign('content_box_id')->references('id')->on('content_boxes')->onDelete('cascade');
         });
     }
 

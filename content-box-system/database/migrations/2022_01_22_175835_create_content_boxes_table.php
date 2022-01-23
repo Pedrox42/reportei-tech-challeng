@@ -19,7 +19,7 @@ class CreateContentBoxesTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->timestamps();
 
-            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

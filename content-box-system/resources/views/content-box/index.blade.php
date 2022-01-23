@@ -16,7 +16,11 @@
                     <td>
                         <a href="{{ route('content-box.show', $contentBox->id) }}"><i class="far fa-eye text-primary"></i></a>
                         <a href="{{ route('content-box.edit', $contentBox->id) }}"><i class="fas fa-edit text-warning mx-3"></i></a>
-                        <a href="#"><i class="far fa-trash-alt text-danger"></i></a>
+                        <a href="#" onclick="document.getElementById({{ $contentBox->id }}).submit()"><i class="far fa-trash-alt text-danger"></i></a>
+                        <form action="{{ route('content-box.destroy', $contentBox->id) }}" method="post" id="{{ $contentBox->id }}">
+                            @csrf
+                            @method('delete')
+                        </form>
                     </td>
                 @endforeach
             @endslot
