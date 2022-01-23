@@ -31,12 +31,12 @@
         </p>
     </a>
     <ul class="nav nav-treeview">
-{{--        <li class="nav-item">--}}
-{{--            <a href="{{ route('content-box.create') }}" class="nav-link">--}}
-{{--                <i class="fas fa-boxes pr-1"></i>--}}
-{{--                <p> Todas</p>--}}
-{{--            </a>--}}
-{{--        </li>--}}
+        <li class="nav-item">
+            <a href="{{ route('content-box.index') }}" class="nav-link">
+                <i class="fas fa-boxes pr-1"></i>
+                <p> Todas</p>
+            </a>
+        </li>
         <li class="nav-item">
             <a href="{{ route('content-box.create') }}" class="nav-link">
                 <i class="fas fa-plus pr-1"></i>

@@ -11,7 +11,11 @@ class ContentBox extends Model
 
     protected $fillable = ['title'];
 
+    public function owner(){
+        return $this->belongsTo(User::class, 'id', 'id');
+    }
+
     public function files(){
-        return $this->hasMany(File::class);
+        return $this->hasMany(File::class, 'content_box_id', 'id');
     }
 }

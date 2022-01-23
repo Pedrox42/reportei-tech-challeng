@@ -14,7 +14,7 @@ class ContentBoxController extends Controller
     public function index()
     {
         $contentBoxes = ContentBox::all();
-        return view('content-boxes', compact($contentBoxes));
+        return view('content-box.index', compact('contentBoxes'));
     }
 
     public function create()
@@ -22,12 +22,6 @@ class ContentBoxController extends Controller
         return view('content-box.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreContentBoxRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreContentBoxRequest $request)
     {
         $data = $request->validated();
@@ -35,13 +29,15 @@ class ContentBoxController extends Controller
         $contentBox->title = $data['title'];
         $contentBox->owner_id = Auth::user()->id;
         $contentBox->save();
-        $file = new File();
         foreach ($data['files'] as $dataFile){
+            $file = new File();
             $storedFile = $dataFile->store(Config::get('uploaded-files.directory'));
             $file->name = pathinfo($storedFile)['basename'];
             $file->content_box_id = $contentBox->id;
             $file->save();
+            unset($file, $storedFile);
         }
+        return redirect(route('content-box.index'));
     }
 
     /**
