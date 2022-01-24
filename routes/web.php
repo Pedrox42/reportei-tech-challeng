@@ -34,8 +34,4 @@ Route::middleware('auth')->group(function (){
     Route::get('/', [ContentBoxController::class, 'index'])->name('content-box.index');
 });
 
-Route::get("/storage", function (){
-    return \Illuminate\Support\Facades\Artisan::call("storage:link");
-});
-
 Auth::routes();
