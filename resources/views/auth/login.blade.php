@@ -74,11 +74,6 @@
 
                 </div>
             </form>
-
-            <p class="mt-4 mb-0 d-flex justify-content-between">
-                <a href="{{ route('password.request') }}">Esqueci minha senha</a>
-                <a href="{{ route('register') }}" class="text-right">Cadastrar</a>
-            </p>
         </div>
         <!-- /.login-card-body -->
     </div>
