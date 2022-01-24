@@ -16,6 +16,7 @@
 
 </head>
 <body class="hold-transition login-page">
+<img src="{{ asset('img/reportei/Reportei_Logotipos_Versões-01.png') }}" width="320" height="180">
 <div class="login-box">
     <div class="login-logo">
         <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>

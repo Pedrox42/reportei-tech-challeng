@@ -5,7 +5,10 @@
         </a>
     </div>
     <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
-        <a href="{{ route('content-box.index') }}" class="navbar-links-color">
+        <div class="image">
+            <img src="{{ asset('/img/defaults/user-default-image.png') }}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <a href="{{ route('content-box.index') }}" class="navbar-links-color info">
             <span href="#" class="brand-text">{{ Auth::user()->name }}</span>
         </a>
     </div>
